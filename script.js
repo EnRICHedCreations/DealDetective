@@ -906,6 +906,19 @@ const properties = [
 let currentProperty = null;
 let currentPropertyIndex = 0;
 
+// New global variables for enhancements
+let gameStats = {
+    scores: [],
+    totalDeals: 0,
+    avgScore: 0,
+    bestScore: 0
+};
+let timerInterval = null;
+let timeRemaining = 120;
+let isTimedMode = false;
+let hintUsed = false;
+let hintPenalty = 0;
+
 // Helper function to format currency
 const formatCurrency = (amount) => {
     // Handle potential negative or zero MAO
@@ -961,6 +974,20 @@ function loadProperty(property) {
         `;
         compCheckboxes.appendChild(label);
     });
+
+    // Reset hint system
+    hintUsed = false;
+    hintPenalty = 0;
+    document.getElementById('hint-btn').disabled = false;
+    document.getElementById('hint-btn').textContent = '💡 Use Hint (-10 points)';
+
+    // Start timer if in timed mode
+    if (isTimedMode) {
+        startTimer();
+    }
+
+    // Add fade-in animation
+    fadeInElement(document.querySelector('.container'));
 }
 
 // Function to calculate score based on deviation
@@ -1085,13 +1112,34 @@ document.getElementById('arv-form').addEventListener('submit', function(e) {
     compScore = Math.max(0, compScore);
 
     // Final score is a weighted average
-    const finalScore = Math.round((compScore * 0.2) + (arvScore * 0.3) + (repairsScore * 0.2) + (maoScore * 0.3));
+    let finalScore = Math.round((compScore * 0.2) + (arvScore * 0.3) + (repairsScore * 0.2) + (maoScore * 0.3));
+
+    // Apply hint penalty
+    finalScore = Math.max(0, finalScore - hintPenalty);
     const grade = getGrade(finalScore);
+
+    // Stop timer if running
+    stopTimer();
 
     // 4. Update Display
     document.getElementById('player-mao').textContent = formatCurrency(playerMAO);
-    document.getElementById('final-score').textContent = `${finalScore} / 100 (${grade})`;
+    const scoreElement = document.getElementById('final-score');
+    scoreElement.textContent = `${finalScore} / 100 (${grade})`;
     document.getElementById('results').classList.remove('hidden');
+
+    // Show visual feedback on comp selection
+    showCompFeedback(selectedComps, goodComps);
+
+    // Record score to stats
+    recordScore(finalScore);
+
+    // Animate score display
+    animateScore(scoreElement);
+
+    // Show confetti for excellent scores
+    if (finalScore >= 90) {
+        showConfetti();
+    }
 
     // Enable the "Next Challenge" button
     document.getElementById('next-challenge-btn').disabled = false;
@@ -1154,6 +1202,10 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Page loaded, initializing first property...');
     console.log('Total properties:', properties.length);
     console.log('Current index:', currentPropertyIndex);
+
+    // Load saved statistics
+    loadStats();
+
     if (properties && properties.length > 0) {
         loadProperty(properties[currentPropertyIndex]);
     } else {
@@ -1197,4 +1249,188 @@ function calculateCalc() {
             display.value = '0';
         }, 1500);
     }
+}
+
+
+// ===== NEW FEATURES =====
+
+// 1. PROGRESS TRACKING & STATISTICS
+function loadStats() {
+    const saved = localStorage.getItem('dealDetectiveStats');
+    if (saved) {
+        gameStats = JSON.parse(saved);
+        updateStatsDisplay();
+    }
+}
+
+function saveStats() {
+    localStorage.setItem('dealDetectiveStats', JSON.stringify(gameStats));
+}
+
+function updateStatsDisplay() {
+    document.getElementById('avg-score').textContent = gameStats.avgScore || '--';
+    document.getElementById('best-score').textContent = gameStats.bestScore || '--';
+}
+
+function recordScore(score) {
+    gameStats.scores.push(score);
+    gameStats.totalDeals++;
+    gameStats.avgScore = Math.round(gameStats.scores.reduce((a, b) => a + b, 0) / gameStats.scores.length);
+    gameStats.bestScore = Math.max(gameStats.bestScore, score);
+    saveStats();
+    updateStatsDisplay();
+}
+
+
+// 2. TIMED CHALLENGE MODE
+function startTimer() {
+    timeRemaining = 120;
+    updateTimerDisplay();
+    document.getElementById('timer-display').classList.remove('hidden');
+
+    timerInterval = setInterval(() => {
+        timeRemaining--;
+        updateTimerDisplay();
+
+        if (timeRemaining <=  10) {
+            document.getElementById('timer-value').classList.add('warning');
+        }
+
+        if (timeRemaining <= 0) {
+            stopTimer();
+            autoSubmitForm();
+        }
+    }, 1000);
+}
+
+function stopTimer() {
+    if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
+    document.getElementById('timer-display').classList.add('hidden');
+    document.getElementById('timer-value').classList.remove('warning');
+}
+
+function updateTimerDisplay() {
+    document.getElementById('timer-value').textContent = timeRemaining;
+}
+
+function autoSubmitForm() {
+    // Fill any empty required fields with 0 before auto-submitting
+    const arvInput = document.getElementById('input-arv');
+    const repairsInput = document.getElementById('input-repairs');
+    const maoInput = document.getElementById('input-mao');
+
+    if (!arvInput.value) arvInput.value = '0';
+    if (!repairsInput.value) repairsInput.value = '0';
+    if (!maoInput.value) maoInput.value = '0';
+
+    const submitBtn = document.getElementById('submit-btn');
+    submitBtn.click();
+}
+
+// Timer mode toggle listener
+document.getElementById('timed-mode-toggle').addEventListener('change', function(e) {
+    isTimedMode = e.target.checked;
+    if (!isTimedMode) {
+        stopTimer();
+    }
+});
+
+
+// 3. HINT SYSTEM
+function useHint() {
+    if (hintUsed || !currentProperty) return;
+
+    const goodComps = currentProperty.comps.filter(c => c.isGood);
+    if (goodComps.length === 0) return;
+
+    // Select a random good comp
+    const randomGoodComp = goodComps[Math.floor(Math.random() * goodComps.length)];
+
+    // Find and highlight the checkbox label
+    const checkboxes = document.querySelectorAll('input[name="selected-comps"]');
+    checkboxes.forEach(cb => {
+        if (cb.value === randomGoodComp.id) {
+            cb.parentElement.classList.add('comp-hint');
+        }
+    });
+
+    hintUsed = true;
+    hintPenalty = 10;
+    document.getElementById('hint-btn').disabled = true;
+    document.getElementById('hint-btn').textContent = 'Hint Used ✓';
+}
+
+
+// 4. VISUAL FEEDBACK ON COMP SELECTION
+function showCompFeedback(selectedComps, goodComps) {
+    const checkboxes = document.querySelectorAll('input[name="selected-comps"]');
+
+    checkboxes.forEach(cb => {
+        const label = cb.parentElement;
+        const compId = cb.value;
+
+        // Remove previous classes
+        label.classList.remove('comp-correct', 'comp-incorrect', 'comp-missed', 'comp-hint');
+
+        if (selectedComps.includes(compId)) {
+            if (goodComps.includes(compId)) {
+                label.classList.add('comp-correct');
+            } else {
+                label.classList.add('comp-incorrect');
+            }
+        } else if (goodComps.includes(compId)) {
+            label.classList.add('comp-missed');
+        }
+    });
+}
+
+
+// 5. ANIMATIONS
+function animateScore(element) {
+    element.classList.add('score-animate');
+
+    // Animate counter from 0 to final value
+    const finalValue = parseInt(element.textContent);
+    let current = 0;
+    const increment = Math.ceil(finalValue / 30);
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= finalValue) {
+            current = finalValue;
+            clearInterval(timer);
+        }
+        element.textContent = current;
+    }, 30);
+}
+
+function showConfetti() {
+    const container = document.createElement('div');
+    container.className = 'confetti-container';
+    document.body.appendChild(container);
+
+    const colors = ['#FFD700', '#FFA500', '#FF6347', '#4CAF50', '#2196F3', '#9C27B0'];
+
+    for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = Math.random() * 0.5 + 's';
+        confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        container.appendChild(confetti);
+    }
+
+    setTimeout(() => {
+        document.body.removeChild(container);
+    }, 4000);
+}
+
+function fadeInElement(element) {
+    element.classList.add('fade-in');
+    setTimeout(() => {
+        element.classList.remove('fade-in');
+    }, 500);
 }
