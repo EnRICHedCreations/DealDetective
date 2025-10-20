@@ -1796,3 +1796,39 @@ function fadeInElement(element) {
         element.classList.remove('fade-in');
     }, 500);
 }
+// ===== HOW TO PLAY MODAL =====
+function openHowToPlayModal() {
+    const modal = document.getElementById('how-to-play-modal');
+    modal.classList.remove('hidden');
+    modal.classList.add('fade-in');
+    
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = 'hidden';
+}
+
+function closeHowToPlayModal() {
+    const modal = document.getElementById('how-to-play-modal');
+    modal.classList.add('hidden');
+    modal.classList.remove('fade-in');
+    
+    // Restore body scroll
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside of modal content
+document.addEventListener('click', function(e) {
+    const modal = document.getElementById('how-to-play-modal');
+    if (e.target === modal) {
+        closeHowToPlayModal();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('how-to-play-modal');
+        if (!modal.classList.contains('hidden')) {
+            closeHowToPlayModal();
+        }
+    }
+});
