@@ -216,6 +216,40 @@
             width: auto;
         }
 
+        /* --- REPAIR OPTIONS --- */
+        #repair-options label {
+            font-weight: 500;
+            color: var(--text-light);
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 6px;
+            background: #252525;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        #repair-options label:hover {
+            border-color: #ad9051;
+            background: rgba(173, 144, 81, 0.1);
+        }
+
+        #repair-options input[type="radio"] {
+            margin-right: 10px;
+            width: auto;
+            cursor: pointer;
+        }
+
+        #repair-options input[type="radio"]:checked + * {
+            font-weight: 700;
+        }
+
+        #repair-options label:has(input[type="radio"]:checked) {
+            border-color: #ad9051;
+            background: rgba(173, 144, 81, 0.2);
+        }
+
         /* --- BUTTONS --- */
         .cta-button {
             width: 100%;
@@ -668,6 +702,12 @@
             <h3 class="section-subtitle">Condition Report</h3>
             <div class="condition-note">
                 <p id="property-condition">--</p>
+            </div>
+            <div id="repair-options-section">
+                <h3 class="section-subtitle" style="margin-top: 20px;">Estimated Repairs</h3>
+                <div id="repair-options" style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 10px;">
+                    <!-- Repair options will be populated by JavaScript -->
+                </div>
             </div>
         </div>
 
