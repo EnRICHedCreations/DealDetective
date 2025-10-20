@@ -628,10 +628,150 @@
             }
         }
 
+        /* --- HOW TO PLAY BUTTON --- */
+        .how-to-play-button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #7c6338, #ad9051);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .how-to-play-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(173, 144, 81, 0.4);
+        }
+
+        /* --- MODAL --- */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal.hidden {
+            display: none;
+        }
+
+        .modal-content {
+            background: var(--card-dark);
+            border-radius: 10px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            border-bottom: 2px solid var(--border-color);
+            background: linear-gradient(135deg, rgba(124, 99, 56, 0.2), rgba(173, 144, 81, 0.2));
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: var(--text-light);
+            font-size: 1.8em;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 2em;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ad9051;
+        }
+
+        .modal-body {
+            padding: 30px;
+            color: var(--text-light);
+        }
+
+        .modal-body h3 {
+            color: #ad9051;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .modal-body h3:first-child {
+            margin-top: 0;
+        }
+
+        .modal-body p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .modal-body ol, .modal-body ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .modal-body li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        .modal-body code {
+            background: #252525;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #ad9051;
+            font-family: 'Courier New', monospace;
+        }
+
         /* --- RESPONSIVE --- */
         @media (max-width: 1024px) {
             .two-column-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .how-to-play-button {
+                font-size: 0.9em;
+                padding: 8px 15px;
+            }
+
+            .modal-content {
+                max-width: 95%;
+            }
+
+            .modal-body {
+                padding: 20px;
             }
         }
     </style>
@@ -639,10 +779,65 @@
 <body>
     <header>
         <div class="header-content">
-            <h1>Deal Detective - Wholesale Deal Analyzer Game</h1>
-            <p>Master the art of real estate comps analysis and MAO calculations</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h1>Deal Detective - Wholesale Deal Analyzer Game</h1>
+                    <p>Master the art of real estate comps analysis and MAO calculations</p>
+                </div>
+                <button id="how-to-play-btn" class="how-to-play-button" onclick="openHowToPlayModal()">
+                    📖 How to Play
+                </button>
+            </div>
         </div>
     </header>
+
+    <!-- How to Play Modal -->
+    <div id="how-to-play-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📖 How to Play Deal Detective</h2>
+                <button class="modal-close" onclick="closeHowToPlayModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>🎯 Objective</h3>
+                <p>Analyze real estate deals like a professional wholesaler. Estimate ARV, repair costs, and calculate the Maximum Allowable Offer (MAO) to score points.</p>
+
+                <h3>📋 Step-by-Step Guide</h3>
+                <ol>
+                    <li><strong>Review Property Details:</strong> Check the address, beds, baths, square footage, and condition report.</li>
+                    <li><strong>Select Repair Estimate:</strong> Choose the most accurate repair cost from the options provided based on the condition report.</li>
+                    <li><strong>Analyze Comparable Sales (Comps):</strong> Review the 6 comparable properties. Look for recent sales with similar features and condition. Ignore outliers (old sales, foreclosures, different sizes).</li>
+                    <li><strong>Select Best Comps:</strong> Check the boxes next to the 3 most reliable comps. Focus on date, condition, and similarity to the subject property.</li>
+                    <li><strong>Estimate ARV:</strong> Calculate the After Repair Value by averaging your selected comps. Use the built-in calculator if needed.</li>
+                    <li><strong>Calculate MAO:</strong> Use the formula: <code>(ARV × 90%) - (Repairs × 2) - $10,000</code></li>
+                    <li><strong>Submit & Score:</strong> Submit your analysis to see how you did! You'll receive detailed feedback on each component.</li>
+                </ol>
+
+                <h3>⚡ Game Features</h3>
+                <ul>
+                    <li><strong>💡 Hints:</strong> Click the hint button to highlight one good comp (-10 points penalty)</li>
+                    <li><strong>⏱️ Timed Mode:</strong> Toggle for a 120-second challenge mode</li>
+                    <li><strong>📊 Progress Tracking:</strong> Your average and best scores are saved automatically</li>
+                    <li><strong>🎲 Random Deals:</strong> Jump to any random property to practice</li>
+                </ul>
+
+                <h3>🏆 Scoring</h3>
+                <ul>
+                    <li><strong>Comp Selection (20%):</strong> -20 points per wrong comp, -15 per missed good comp</li>
+                    <li><strong>Repair Estimate (20%):</strong> Must select the correct repair value</li>
+                    <li><strong>ARV Estimate (30%):</strong> Score based on % deviation from true ARV</li>
+                    <li><strong>MAO Calculation (30%):</strong> Score based on % deviation from true MAO</li>
+                    <li><strong>90+:</strong> Excellent wholesaler! 🎯</li>
+                    <li><strong>70-89:</strong> Solid deal analysis ✓</li>
+                    <li><strong>&lt;70:</strong> Keep practicing! 📚</li>
+                </ul>
+
+                <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #333;">
+                    <p style="color: var(--text-faded);">Good luck, and happy deal hunting! 🏡</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container">
         <!-- Stats & Controls Bar - Full Width -->
@@ -839,6 +1034,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
