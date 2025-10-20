@@ -8,6 +8,12 @@ const properties = [
         condition: "Good structure. Needs paint, new carpet, and updated fixtures.",
         trueARV: Math.round((310000 + 280000 + 305000) / 3), // $298,333 (average of good comps)
         trueRepairs: 30000,
+        repairOptions: [
+            { value: 20000, isCorrect: false },
+            { value: 30000, isCorrect: true },
+            { value: 40000, isCorrect: false },
+            { value: 50000, isCorrect: false }
+        ],
         // MAO = (ARV * 0.90) - (Repairs * 2) - $10,000 fee
         trueMAO: Math.round((0.90 * Math.round((310000 + 280000 + 305000) / 3)) - (2 * 30000) - 10000), // $198,500
         comps: [
@@ -27,6 +33,12 @@ const properties = [
         condition: "Needs full kitchen and two bathroom remodels. New roof required (approx $15k).",
         trueARV: Math.round((445000 + 460000 + 430000) / 3), // $445,000 (average of good comps)
         trueRepairs: 60000, 
+        repairOptions: [
+            { value: 35000, isCorrect: false },
+            { value: 60000, isCorrect: true },
+            { value: 85000, isCorrect: false },
+            { value: 110000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((445000 + 460000 + 430000) / 3)) - (2 * 60000) - 10000), // $270,500
         comps: [
             { id: 'A', price: 445000, date: '2 weeks ago', condition: 'Similar size, perfect comp.', isGood: true },
@@ -44,7 +56,13 @@ const properties = [
         beds: 2, baths: 1, sqFt: 900,
         condition: "Total gut. Foundation, electrical, plumbing, and roof all need replacement. Very costly.",
         trueARV: Math.round((160000 + 145000 + 120000) / 3), // $141,666 (average of good comps)
-        trueRepairs: 75000, 
+        trueRepairs: 75000,
+        repairOptions: [
+            { value: 45000, isCorrect: false },
+            { value: 75000, isCorrect: true },
+            { value: 105000, isCorrect: false },
+            { value: 135000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((160000 + 145000 + 120000) / 3)) - (2 * 75000) - 10000), // $-32,500
         comps: [
             { id: 'A', price: 160000, date: '1 week ago', condition: 'Highest comp for renovated small home.', isGood: true },
@@ -62,7 +80,13 @@ const properties = [
         beds: 5, baths: 4, sqFt: 3500,
         condition: "Excellent condition. Needs minor high-end paint, trim, and landscaping to maximize profit.",
         trueARV: Math.round((840000 + 860000 + 830000) / 3), // $843,333 (average of good comps)
-        trueRepairs: 40000, 
+        trueRepairs: 40000,
+        repairOptions: [
+            { value: 25000, isCorrect: false },
+            { value: 40000, isCorrect: true },
+            { value: 55000, isCorrect: false },
+            { value: 70000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((840000 + 860000 + 830000) / 3)) - (2 * 40000) - 10000), // $668,999
         comps: [
             { id: 'A', price: 840000, date: '1 month ago', condition: 'Similar size, perfect comp.', isGood: true },
@@ -80,7 +104,13 @@ const properties = [
         beds: 3, baths: 1, sqFt: 1200,
         condition: "Kitchen fire damage and smoke damage throughout. Requires full mitigation and new HVAC.",
         trueARV: Math.round((260000 + 240000 + 255000) / 3), // $251,666 (average of good comps)
-        trueRepairs: 70000, 
+        trueRepairs: 70000,
+        repairOptions: [
+            { value: 40000, isCorrect: false },
+            { value: 70000, isCorrect: true },
+            { value: 100000, isCorrect: false },
+            { value: 125000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((260000 + 240000 + 255000) / 3)) - (2 * 70000) - 10000), // $76,499
         comps: [
             { id: 'A', price: 260000, date: '1 week ago', condition: 'Highest comp for renovated small home.', isGood: true },
@@ -98,7 +128,13 @@ const properties = [
         beds: 2, baths: 1, sqFt: 800,
         condition: "Rent-ready, but needs new paint and deep clean to maximize rent/value.",
         trueARV: Math.round((185000 + 190000 + 160000) / 3), // $178,333 (average of good comps)
-        trueRepairs: 15000, 
+        trueRepairs: 15000,
+        repairOptions: [
+            { value: 9000, isCorrect: false },
+            { value: 15000, isCorrect: true },
+            { value: 20000, isCorrect: false },
+            { value: 25000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((185000 + 190000 + 160000) / 3)) - (2 * 15000) - 10000), // $120,499
         comps: [
             { id: 'A', price: 185000, date: '2 weeks ago', condition: 'Identical unit, strong ARV.', isGood: true },
@@ -116,7 +152,13 @@ const properties = [
         beds: 3, baths: 2, sqFt: 1600,
         condition: "Major cleanout needed. Interior is trashed. Requires new floors, kitchen, and minor drywall repair.",
         trueARV: Math.round((340000 + 360000 + 355000) / 3), // $351,666 (average of good comps)
-        trueRepairs: 65000, 
+        trueRepairs: 65000,
+        repairOptions: [
+            { value: 40000, isCorrect: false },
+            { value: 65000, isCorrect: true },
+            { value: 90000, isCorrect: false },
+            { value: 115000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((340000 + 360000 + 355000) / 3)) - (2 * 65000) - 10000), // $176,499
         comps: [
             { id: 'A', price: 340000, date: '1 week ago', condition: 'Reliable ARV comp.', isGood: true },
@@ -134,7 +176,13 @@ const properties = [
         beds: 3, baths: 1, sqFt: 1100,
         condition: "Need new roof, HVAC, and full cosmetic overhaul. Area dictates low ARV cap.",
         trueARV: Math.round((165000 + 175000 + 155000) / 3), // $165,000 (average of good comps)
-        trueRepairs: 50000, 
+        trueRepairs: 50000,
+        repairOptions: [
+            { value: 30000, isCorrect: false },
+            { value: 50000, isCorrect: true },
+            { value: 70000, isCorrect: false },
+            { value: 90000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((165000 + 175000 + 155000) / 3)) - (2 * 50000) - 10000), // $38,500
         comps: [
             { id: 'A', price: 165000, date: '2 weeks ago', condition: 'Reliable ARV comp.', isGood: true },
@@ -152,7 +200,13 @@ const properties = [
         beds: 4, baths: 3, sqFt: 2000,
         condition: "All systems (HVAC, roof) are modern. Needs new kitchen, baths, and flooring throughout.",
         trueARV: Math.round((410000 + 390000 + 350000) / 3), // $383,333 (average of good comps)
-        trueRepairs: 55000, 
+        trueRepairs: 55000,
+        repairOptions: [
+            { value: 35000, isCorrect: false },
+            { value: 55000, isCorrect: true },
+            { value: 75000, isCorrect: false },
+            { value: 100000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((410000 + 390000 + 350000) / 3)) - (2 * 55000) - 10000), // $224,999
         comps: [
             { id: 'A', price: 410000, date: '1 month ago', condition: 'Highest ARV comp, good ceiling.', isGood: true },
@@ -170,7 +224,13 @@ const properties = [
         beds: 4, baths: 2, sqFt: 2500,
         condition: "Large home, requires new roof, windows, and full cosmetic. Potential for 3rd bath addition ($15k cost).",
         trueARV: Math.round((540000 + 580000 + 555000) / 3), // $558,333 (average of good comps)
-        trueRepairs: 80000, 
+        trueRepairs: 80000,
+        repairOptions: [
+            { value: 50000, isCorrect: false },
+            { value: 80000, isCorrect: true },
+            { value: 110000, isCorrect: false },
+            { value: 145000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((540000 + 580000 + 555000) / 3)) - (2 * 80000) - 10000), // $332,499
         comps: [
             { id: 'A', price: 540000, date: '2 weeks ago', condition: 'Reliable ARV comp.', isGood: true },
@@ -188,7 +248,13 @@ const properties = [
         beds: 3, baths: 2, sqFt: 1800,
         condition: "Modern open concept, but basement requires $15k in waterproofing. Light cosmetic upstairs.",
         trueARV: Math.round((410000 + 425000 + 415000) / 3), // $416,666 (average of good comps)
-        trueRepairs: 40000, 
+        trueRepairs: 40000,
+        repairOptions: [
+            { value: 25000, isCorrect: false },
+            { value: 40000, isCorrect: true },
+            { value: 55000, isCorrect: false },
+            { value: 70000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((410000 + 425000 + 415000) / 3)) - (2 * 40000) - 10000), // $284,999
         comps: [
             { id: 'A', price: 410000, date: '2 weeks ago', condition: 'Perfect match, same neighborhood.', isGood: true },
@@ -206,7 +272,13 @@ const properties = [
         beds: 4, baths: 3, sqFt: 2200,
         condition: "Top school district. Needs quick cosmetic refresh to meet buyer expectations. Systems are sound.",
         trueARV: Math.round((745000 + 700000 + 760000) / 3), // $735,000 (average of good comps)
-        trueRepairs: 30000, 
+        trueRepairs: 30000,
+        repairOptions: [
+            { value: 18000, isCorrect: false },
+            { value: 30000, isCorrect: true },
+            { value: 40000, isCorrect: false },
+            { value: 55000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((745000 + 700000 + 760000) / 3)) - (2 * 30000) - 10000), // $591,500
         comps: [
             { id: 'A', price: 745000, date: '1 month ago', condition: 'Similar size, perfect comp.', isGood: true },
@@ -224,7 +296,13 @@ const properties = [
         beds: 3, baths: 1, sqFt: 1300,
         condition: "Needs roof, HVAC, and kitchen updates. General deferred maintenance for 10+ years.",
         trueARV: Math.round((255000 + 280000 + 265000) / 3), // $266,666 (average of good comps)
-        trueRepairs: 60000, 
+        trueRepairs: 60000,
+        repairOptions: [
+            { value: 35000, isCorrect: false },
+            { value: 60000, isCorrect: true },
+            { value: 85000, isCorrect: false },
+            { value: 110000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((255000 + 280000 + 265000) / 3)) - (2 * 60000) - 10000), // $109,999
         comps: [
             { id: 'A', price: 255000, date: '3 weeks ago', condition: 'Comparable rehab, reliable.', isGood: true },
@@ -242,7 +320,13 @@ const properties = [
         beds: 4, baths: 2, sqFt: 2500,
         condition: "Large single-family house zoned for duplex conversion. Needs full gut, new electrical/plumbing for two units.",
         trueARV: Math.round((620000 + 590000 + 610000) / 3), // $606,666 (average of good comps)
-        trueRepairs: 120000, 
+        trueRepairs: 120000,
+        repairOptions: [
+            { value: 70000, isCorrect: false },
+            { value: 120000, isCorrect: true },
+            { value: 170000, isCorrect: false },
+            { value: 215000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((620000 + 590000 + 610000) / 3)) - (2 * 120000) - 10000), // $295,999
         comps: [
             { id: 'A', price: 620000, date: '1 month ago', condition: 'Recently converted duplex.', isGood: true },
@@ -260,7 +344,13 @@ const properties = [
         beds: 3, baths: 1, sqFt: 1000,
         condition: "Unfinished basement flooded. Significant mold and HVAC replacement required.",
         trueARV: Math.round((195000 + 205000 + 210000) / 3), // $203,333 (average of good comps)
-        trueRepairs: 80000, 
+        trueRepairs: 80000,
+        repairOptions: [
+            { value: 50000, isCorrect: false },
+            { value: 80000, isCorrect: true },
+            { value: 110000, isCorrect: false },
+            { value: 145000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((195000 + 205000 + 210000) / 3)) - (2 * 80000) - 10000), // $12,999
         comps: [
             { id: 'A', price: 195000, date: '1 week ago', condition: 'Similar size, solid ARV.', isGood: true },
@@ -278,7 +368,13 @@ const properties = [
         beds: 4, baths: 3, sqFt: 2100,
         condition: "Needs full cosmetic updates throughout. Roof is 15 years old and needs replacement.",
         trueARV: Math.round((440000 + 460000 + 450000) / 3), // $450,000 (average of good comps)
-        trueRepairs: 65000, 
+        trueRepairs: 65000,
+        repairOptions: [
+            { value: 40000, isCorrect: false },
+            { value: 65000, isCorrect: true },
+            { value: 90000, isCorrect: false },
+            { value: 115000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((440000 + 460000 + 450000) / 3)) - (2 * 65000) - 10000), // $265,000
         comps: [
             { id: 'A', price: 440000, date: '1 month ago', condition: 'Standard flip, useable.', isGood: true },
@@ -296,7 +392,13 @@ const properties = [
         beds: 2, baths: 2, sqFt: 1100,
         condition: "High-rise unit. Needs minor kitchen refresh and new flooring. Excellent views are a factor.",
         trueARV: Math.round((645000 + 660000 + 650000) / 3), // $651,666 (average of good comps)
-        trueRepairs: 20000, 
+        trueRepairs: 20000,
+        repairOptions: [
+            { value: 12000, isCorrect: false },
+            { value: 20000, isCorrect: true },
+            { value: 30000, isCorrect: false },
+            { value: 35000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((645000 + 660000 + 650000) / 3)) - (2 * 20000) - 10000), // $536,499
         comps: [
             { id: 'A', price: 645000, date: '1 week ago', condition: 'Identical unit, strong ARV.', isGood: true },
@@ -314,7 +416,13 @@ const properties = [
         beds: 3, baths: 2, sqFt: 1600,
         condition: "Minor fire damage in the kitchen, smoke damage throughout. Requires full system checks and mitigation.",
         trueARV: Math.round((305000 + 310000 + 285000) / 3), // $300,000 (average of good comps)
-        trueRepairs: 90000, 
+        trueRepairs: 90000,
+        repairOptions: [
+            { value: 55000, isCorrect: false },
+            { value: 90000, isCorrect: true },
+            { value: 125000, isCorrect: false },
+            { value: 160000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((305000 + 310000 + 285000) / 3)) - (2 * 90000) - 10000), // $80,000
         comps: [
             { id: 'A', price: 305000, date: '1 month ago', condition: 'Similar size, perfect comp.', isGood: true },
@@ -332,7 +440,13 @@ const properties = [
         beds: 3, baths: 1, sqFt: 1250,
         condition: "Historical property. Interior needs full renovation, but exterior brick/windows must be preserved (costly).",
         trueARV: Math.round((215000 + 225000 + 220000) / 3), // $220,000 (average of good comps)
-        trueRepairs: 55000, 
+        trueRepairs: 55000,
+        repairOptions: [
+            { value: 35000, isCorrect: false },
+            { value: 55000, isCorrect: true },
+            { value: 75000, isCorrect: false },
+            { value: 100000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((215000 + 225000 + 220000) / 3)) - (2 * 55000) - 10000), // $78,000
         comps: [
             { id: 'A', price: 215000, date: '1 week ago', condition: 'Historic district remodel, reliable.', isGood: true },
@@ -350,7 +464,13 @@ const properties = [
         beds: 4, baths: 2, sqFt: 1750,
         condition: "Cosmetic wear, but roof, furnace, and AC are all original and must be replaced.",
         trueARV: Math.round((380000 + 370000 + 390000) / 3), // $380,000 (average of good comps)
-        trueRepairs: 70000, 
+        trueRepairs: 70000,
+        repairOptions: [
+            { value: 40000, isCorrect: false },
+            { value: 70000, isCorrect: true },
+            { value: 100000, isCorrect: false },
+            { value: 125000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((380000 + 370000 + 390000) / 3)) - (2 * 70000) - 10000), // $192,000
         comps: [
             { id: 'A', price: 380000, date: '1 month ago', condition: 'Similar size, great ARV.', isGood: true },
@@ -368,7 +488,13 @@ const properties = [
         beds: 2, baths: 1, sqFt: 1050,
         condition: "Ready to rent but needs new paint and carpet to maximize rent rate. Perfect buy-and-hold.",
         trueARV: Math.round((205000 + 215000 + 210000) / 3), // $210,000 (average of good comps)
-        trueRepairs: 20000, 
+        trueRepairs: 20000,
+        repairOptions: [
+            { value: 12000, isCorrect: false },
+            { value: 20000, isCorrect: true },
+            { value: 30000, isCorrect: false },
+            { value: 35000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((205000 + 215000 + 210000) / 3)) - (2 * 20000) - 10000), // $139,000
         comps: [
             { id: 'A', price: 205000, date: '1 month ago', condition: 'Similar condition, good ARV.', isGood: true },
@@ -386,7 +512,13 @@ const properties = [
         beds: 4, baths: 3, sqFt: 2400,
         condition: "Major foundation issues. Requires $70k in structural work plus cosmetic updates.",
         trueARV: Math.round((490000 + 520000 + 505000) / 3), // $505,000 (average of good comps)
-        trueRepairs: 110000, 
+        trueRepairs: 110000,
+        repairOptions: [
+            { value: 65000, isCorrect: false },
+            { value: 110000, isCorrect: true },
+            { value: 155000, isCorrect: false },
+            { value: 200000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((490000 + 520000 + 505000) / 3)) - (2 * 110000) - 10000), // $224,500
         comps: [
             { id: 'A', price: 490000, date: '1 week ago', condition: 'Similar home, strong ARV.', isGood: true },
@@ -404,7 +536,13 @@ const properties = [
         beds: 3, baths: 2, sqFt: 1500,
         condition: "Small lot, high price/sq ft area. Needs quick light cosmetic updates to flip fast.",
         trueARV: Math.round((590000 + 550000 + 585000) / 3), // $575,000 (average of good comps)
-        trueRepairs: 25000, 
+        trueRepairs: 25000,
+        repairOptions: [
+            { value: 15000, isCorrect: false },
+            { value: 25000, isCorrect: true },
+            { value: 35000, isCorrect: false },
+            { value: 45000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((590000 + 550000 + 585000) / 3)) - (2 * 25000) - 10000), // $457,500
         comps: [
             { id: 'A', price: 590000, date: '1 month ago', condition: 'Similar size, perfect comp.', isGood: true },
@@ -422,7 +560,13 @@ const properties = [
         beds: 5, baths: 4, sqFt: 3500,
         condition: "Requires total gut. All systems, windows, roof, and interior must be new.",
         trueARV: Math.round((920000 + 850000 + 900000) / 3), // $890,000 (average of good comps)
-        trueRepairs: 180000, 
+        trueRepairs: 180000,
+        repairOptions: [
+            { value: 110000, isCorrect: false },
+            { value: 180000, isCorrect: true },
+            { value: 250000, isCorrect: false },
+            { value: 325000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((920000 + 850000 + 900000) / 3)) - (2 * 180000) - 10000), // $431,000
         comps: [
             { id: 'A', price: 920000, date: '1 month ago', condition: 'Top comp, high end.', isGood: true },
@@ -440,7 +584,13 @@ const properties = [
         beds: 2, baths: 1, sqFt: 850,
         condition: "Move-in ready condition. Needs only fresh exterior paint and minor landscaping.",
         trueARV: Math.round((165000 + 155000 + 160000) / 3), // $160,000 (average of good comps)
-        trueRepairs: 8000, 
+        trueRepairs: 8000,
+        repairOptions: [
+            { value: 5000, isCorrect: false },
+            { value: 8000, isCorrect: true },
+            { value: 11000, isCorrect: false },
+            { value: 14000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((165000 + 155000 + 160000) / 3)) - (2 * 8000) - 10000), // $118,000
         comps: [
             { id: 'A', price: 165000, date: '1 week ago', condition: 'Perfect match, ideal ARV.', isGood: true },
@@ -458,7 +608,13 @@ const properties = [
         beds: 3, baths: 2, sqFt: 1700,
         condition: "Kitchen and baths are fine, but the entire electrical and plumbing system must be replaced.",
         trueARV: Math.round((375000 + 400000 + 385000) / 3), // $386,666 (average of good comps)
-        trueRepairs: 85000, 
+        trueRepairs: 85000,
+        repairOptions: [
+            { value: 50000, isCorrect: false },
+            { value: 85000, isCorrect: true },
+            { value: 120000, isCorrect: false },
+            { value: 155000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((375000 + 400000 + 385000) / 3)) - (2 * 85000) - 10000), // $167,999
         comps: [
             { id: 'A', price: 375000, date: '1 month ago', condition: 'Similar size, good ARV.', isGood: true },
@@ -476,7 +632,13 @@ const properties = [
         beds: 4, baths: 3, sqFt: 2800,
         condition: "Luxury neighborhood. Needs cosmetic refresh of kitchen and baths to reach top market value.",
         trueARV: Math.round((730000 + 680000 + 725000) / 3), // $711,666 (average of good comps)
-        trueRepairs: 45000, 
+        trueRepairs: 45000,
+        repairOptions: [
+            { value: 25000, isCorrect: false },
+            { value: 45000, isCorrect: true },
+            { value: 65000, isCorrect: false },
+            { value: 80000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((730000 + 680000 + 725000) / 3)) - (2 * 45000) - 10000), // $540,499
         comps: [
             { id: 'A', price: 730000, date: '1 week ago', condition: 'Highest comp, good ARV target.', isGood: true },
@@ -494,7 +656,13 @@ const properties = [
         beds: 3, baths: 2, sqFt: 1350,
         condition: "Garage can be converted to an extra bedroom/office (estimated $20k). Needs full interior update.",
         trueARV: Math.round((325000 + 340000 + 335000) / 3), // $333,333 (average of good comps)
-        trueRepairs: 55000, 
+        trueRepairs: 55000,
+        repairOptions: [
+            { value: 35000, isCorrect: false },
+            { value: 55000, isCorrect: true },
+            { value: 75000, isCorrect: false },
+            { value: 100000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((325000 + 340000 + 335000) / 3)) - (2 * 55000) - 10000), // $179,999
         comps: [
             { id: 'A', price: 325000, date: '1 month ago', condition: 'Similar size, solid ARV.', isGood: true },
@@ -512,7 +680,13 @@ const properties = [
         beds: 1, baths: 1, sqFt: 500,
         condition: "Micro unit in a trendy area. Needs minor cosmetic updates only.",
         trueARV: Math.round((185000 + 200000 + 195000) / 3), // $193,333 (average of good comps)
-        trueRepairs: 15000, 
+        trueRepairs: 15000,
+        repairOptions: [
+            { value: 9000, isCorrect: false },
+            { value: 15000, isCorrect: true },
+            { value: 20000, isCorrect: false },
+            { value: 25000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((185000 + 200000 + 195000) / 3)) - (2 * 15000) - 10000), // $133,999
         comps: [
             { id: 'A', price: 185000, date: '1 week ago', condition: 'Identical unit, reliable.', isGood: true },
@@ -530,7 +704,13 @@ const properties = [
         beds: 5, baths: 3, sqFt: 2800,
         condition: "High-value area, but house is completely dilapidated. Full structural, system, and cosmetic gut required.",
         trueARV: Math.round((700000 + 650000 + 670000) / 3), // $673,333 (average of good comps)
-        trueRepairs: 150000, 
+        trueRepairs: 150000,
+        repairOptions: [
+            { value: 90000, isCorrect: false },
+            { value: 150000, isCorrect: true },
+            { value: 210000, isCorrect: false },
+            { value: 270000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((700000 + 650000 + 670000) / 3)) - (2 * 150000) - 10000), // $295,999
         comps: [
             { id: 'A', price: 700000, date: '1 month ago', condition: 'Fully renovated, excellent ARV.', isGood: true },
@@ -548,7 +728,13 @@ const properties = [
         beds: 3, baths: 1, sqFt: 1150,
         condition: "Needs full kitchen, bath, and new flooring/paint. All systems functioning but old.",
         trueARV: Math.round((135000 + 150000 + 140000) / 3), // $141,666 (average of good comps)
-        trueRepairs: 35000, 
+        trueRepairs: 35000,
+        repairOptions: [
+            { value: 20000, isCorrect: false },
+            { value: 35000, isCorrect: true },
+            { value: 50000, isCorrect: false },
+            { value: 65000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((135000 + 150000 + 140000) / 3)) - (2 * 35000) - 10000), // $47,499
         comps: [
             { id: 'A', price: 135000, date: '1 month ago', condition: 'Similar condition, good ARV.', isGood: true },
@@ -566,7 +752,13 @@ const properties = [
         beds: 3, baths: 2, sqFt: 1550,
         condition: "Needs new kitchen counters/appliances, updated bathrooms, and fresh paint.",
         trueARV: Math.round((345000 + 320000 + 360000) / 3), // $341,666 (average of good comps)
-        trueRepairs: 45000, 
+        trueRepairs: 45000,
+        repairOptions: [
+            { value: 25000, isCorrect: false },
+            { value: 45000, isCorrect: true },
+            { value: 65000, isCorrect: false },
+            { value: 80000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((345000 + 320000 + 360000) / 3)) - (2 * 45000) - 10000), // $207,499
         comps: [
             { id: 'A', price: 345000, date: '1 month ago', condition: 'Excellent comp.', isGood: true },
@@ -584,7 +776,13 @@ const properties = [
         beds: 4, baths: 2, sqFt: 2000,
         condition: "High acreage boosts ARV. House needs new roof and full cosmetic update.",
         trueARV: Math.round((410000 + 405000 + 395000) / 3), // $403,333 (average of good comps)
-        trueRepairs: 60000, 
+        trueRepairs: 60000,
+        repairOptions: [
+            { value: 35000, isCorrect: false },
+            { value: 60000, isCorrect: true },
+            { value: 85000, isCorrect: false },
+            { value: 110000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((410000 + 405000 + 395000) / 3)) - (2 * 60000) - 10000), // $232,999
         comps: [
             { id: 'A', price: 410000, date: '2 weeks ago', condition: 'Similar acreage, good ARV.', isGood: true },
@@ -602,7 +800,13 @@ const properties = [
         beds: 6, baths: 3, sqFt: 2800,
         condition: "Duplex needs cosmetic updates in both units to maximize rents. Systems are functional.",
         trueARV: Math.round((600000 + 625000 + 550000) / 3), // $591,666 (average of good comps)
-        trueRepairs: 70000, 
+        trueRepairs: 70000,
+        repairOptions: [
+            { value: 40000, isCorrect: false },
+            { value: 70000, isCorrect: true },
+            { value: 100000, isCorrect: false },
+            { value: 125000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((600000 + 625000 + 550000) / 3)) - (2 * 70000) - 10000), // $382,499
         comps: [
             { id: 'A', price: 600000, date: '1 month ago', condition: 'Similar duplex, good ARV.', isGood: true },
@@ -620,7 +824,13 @@ const properties = [
         beds: 2, baths: 1, sqFt: 700,
         condition: "Needs roof, electric panel, and full interior gut. Very old house.",
         trueARV: Math.round((125000 + 100000 + 120000) / 3), // $115,000 (average of good comps)
-        trueRepairs: 45000, 
+        trueRepairs: 45000,
+        repairOptions: [
+            { value: 25000, isCorrect: false },
+            { value: 45000, isCorrect: true },
+            { value: 65000, isCorrect: false },
+            { value: 80000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((125000 + 100000 + 120000) / 3)) - (2 * 45000) - 10000), // $3,500
         comps: [
             { id: 'A', price: 125000, date: '1 month ago', condition: 'Similar size, perfect ARV.', isGood: true },
@@ -638,7 +848,13 @@ const properties = [
         beds: 4, baths: 3, sqFt: 2200,
         condition: "Split-level style. Needs full cosmetic update and new HVAC system.",
         trueARV: Math.round((470000 + 440000 + 460000) / 3), // $456,666 (average of good comps)
-        trueRepairs: 60000, 
+        trueRepairs: 60000,
+        repairOptions: [
+            { value: 35000, isCorrect: false },
+            { value: 60000, isCorrect: true },
+            { value: 85000, isCorrect: false },
+            { value: 110000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((470000 + 440000 + 460000) / 3)) - (2 * 60000) - 10000), // $280,999
         comps: [
             { id: 'A', price: 470000, date: '2 weeks ago', condition: 'Similar style, good ARV.', isGood: true },
@@ -656,7 +872,13 @@ const properties = [
         beds: 5, baths: 4, sqFt: 3500,
         condition: "Custom home, needs high-end kitchen and master bath renovation to match comps.",
         trueARV: Math.round((920000 + 1000000 + 960000) / 3), // $960,000 (average of good comps)
-        trueRepairs: 100000, 
+        trueRepairs: 100000,
+        repairOptions: [
+            { value: 60000, isCorrect: false },
+            { value: 100000, isCorrect: true },
+            { value: 140000, isCorrect: false },
+            { value: 180000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((920000 + 1000000 + 960000) / 3)) - (2 * 100000) - 10000), // $654,000
         comps: [
             { id: 'A', price: 920000, date: '1 month ago', condition: 'Similar custom home, solid ARV.', isGood: true },
@@ -674,7 +896,13 @@ const properties = [
         beds: 3, baths: 2, sqFt: 1400,
         condition: "Needs paint, flooring, and minor kitchen updates. Systems are all good.",
         trueARV: Math.round((295000 + 310000 + 305000) / 3), // $303,333 (average of good comps)
-        trueRepairs: 30000, 
+        trueRepairs: 30000,
+        repairOptions: [
+            { value: 18000, isCorrect: false },
+            { value: 30000, isCorrect: true },
+            { value: 40000, isCorrect: false },
+            { value: 55000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((295000 + 310000 + 305000) / 3)) - (2 * 30000) - 10000), // $202,999
         comps: [
             { id: 'A', price: 295000, date: '1 month ago', condition: 'Similar size, solid ARV.', isGood: true },
@@ -692,7 +920,13 @@ const properties = [
         beds: 3, baths: 1, sqFt: 1100,
         condition: "HVAC, roof, and water heater all need immediate replacement. Light cosmetic needed.",
         trueARV: Math.round((265000 + 280000 + 275000) / 3), // $273,333 (average of good comps)
-        trueRepairs: 80000, 
+        trueRepairs: 80000,
+        repairOptions: [
+            { value: 50000, isCorrect: false },
+            { value: 80000, isCorrect: true },
+            { value: 110000, isCorrect: false },
+            { value: 145000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((265000 + 280000 + 275000) / 3)) - (2 * 80000) - 10000), // $75,999
         comps: [
             { id: 'A', price: 265000, date: '1 month ago', condition: 'Similar size, solid ARV.', isGood: true },
@@ -710,7 +944,13 @@ const properties = [
         beds: 4, baths: 2, sqFt: 2500,
         condition: "Large ranch home. Needs full interior renovation. All systems function but are old.",
         trueARV: Math.round((350000 + 375000 + 360000) / 3), // $361,666 (average of good comps)
-        trueRepairs: 60000, 
+        trueRepairs: 60000,
+        repairOptions: [
+            { value: 35000, isCorrect: false },
+            { value: 60000, isCorrect: true },
+            { value: 85000, isCorrect: false },
+            { value: 110000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((350000 + 375000 + 360000) / 3)) - (2 * 60000) - 10000), // $195,499
         comps: [
             { id: 'A', price: 350000, date: '1 month ago', condition: 'Similar size, solid ARV.', isGood: true },
@@ -728,7 +968,13 @@ const properties = [
         beds: 3, baths: 1, sqFt: 1100,
         condition: "Needs full kitchen, bath, and electrical upgrade to modern standards.",
         trueARV: Math.round((235000 + 250000 + 245000) / 3), // $243,333 (average of good comps)
-        trueRepairs: 50000, 
+        trueRepairs: 50000,
+        repairOptions: [
+            { value: 30000, isCorrect: false },
+            { value: 50000, isCorrect: true },
+            { value: 70000, isCorrect: false },
+            { value: 90000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((235000 + 250000 + 245000) / 3)) - (2 * 50000) - 10000), // $108,999
         comps: [
             { id: 'A', price: 235000, date: '1 month ago', condition: 'Similar size, solid ARV.', isGood: true },
@@ -746,7 +992,13 @@ const properties = [
         beds: 3, baths: 2, sqFt: 1250,
         condition: "HOA handles exterior. Interior needs only light cosmetic updates (paint, carpet).",
         trueARV: Math.round((305000 + 320000 + 315000) / 3), // $313,333 (average of good comps)
-        trueRepairs: 20000, 
+        trueRepairs: 20000,
+        repairOptions: [
+            { value: 12000, isCorrect: false },
+            { value: 20000, isCorrect: true },
+            { value: 30000, isCorrect: false },
+            { value: 35000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((305000 + 320000 + 315000) / 3)) - (2 * 20000) - 10000), // $231,999
         comps: [
             { id: 'A', price: 305000, date: '1 month ago', condition: 'Similar unit, good ARV.', isGood: true },
@@ -764,7 +1016,13 @@ const properties = [
         beds: 4, baths: 2, sqFt: 1900,
         condition: "Clean interior but requires new furnace, water heater, and electrical panel.",
         trueARV: Math.round((380000 + 400000 + 395000) / 3), // $391,666 (average of good comps)
-        trueRepairs: 75000, 
+        trueRepairs: 75000,
+        repairOptions: [
+            { value: 45000, isCorrect: false },
+            { value: 75000, isCorrect: true },
+            { value: 105000, isCorrect: false },
+            { value: 135000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((380000 + 400000 + 395000) / 3)) - (2 * 75000) - 10000), // $192,499
         comps: [
             { id: 'A', price: 380000, date: '1 month ago', condition: 'Similar size, solid ARV.', isGood: true },
@@ -782,7 +1040,13 @@ const properties = [
         beds: 2, baths: 1, sqFt: 800,
         condition: "Needs full interior renovation (kitchen, bath, flooring). High volume turnover area.",
         trueARV: Math.round((125000 + 135000 + 130000) / 3), // $130,000 (average of good comps)
-        trueRepairs: 40000, 
+        trueRepairs: 40000,
+        repairOptions: [
+            { value: 25000, isCorrect: false },
+            { value: 40000, isCorrect: true },
+            { value: 55000, isCorrect: false },
+            { value: 70000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((125000 + 135000 + 130000) / 3)) - (2 * 40000) - 10000), // $27,000
         comps: [
             { id: 'A', price: 125000, date: '1 month ago', condition: 'Similar size, solid ARV.', isGood: true },
@@ -800,7 +1064,13 @@ const properties = [
         beds: 4, baths: 3, sqFt: 3000,
         condition: "High-end neighborhood. Needs cosmetic refresh of master bath and kitchen to maximize ARV.",
         trueARV: Math.round((780000 + 820000 + 810000) / 3), // $803,333 (average of good comps)
-        trueRepairs: 50000, 
+        trueRepairs: 50000,
+        repairOptions: [
+            { value: 30000, isCorrect: false },
+            { value: 50000, isCorrect: true },
+            { value: 70000, isCorrect: false },
+            { value: 90000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((780000 + 820000 + 810000) / 3)) - (2 * 50000) - 10000), // $612,999
         comps: [
             { id: 'A', price: 780000, date: '1 month ago', condition: 'Similar size, solid ARV.', isGood: true },
@@ -818,7 +1088,13 @@ const properties = [
         beds: 3, baths: 2, sqFt: 1600,
         condition: "Roof is old, needs full interior renovation and new systems (HVAC, water heater).",
         trueARV: Math.round((315000 + 330000 + 325000) / 3), // $323,333 (average of good comps)
-        trueRepairs: 70000, 
+        trueRepairs: 70000,
+        repairOptions: [
+            { value: 40000, isCorrect: false },
+            { value: 70000, isCorrect: true },
+            { value: 100000, isCorrect: false },
+            { value: 125000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((315000 + 330000 + 325000) / 3)) - (2 * 70000) - 10000), // $140,999
         comps: [
             { id: 'A', price: 315000, date: '1 month ago', condition: 'Similar size, solid ARV.', isGood: true },
@@ -836,7 +1112,13 @@ const properties = [
         beds: 2, baths: 1, sqFt: 900,
         condition: "Ranch style. Needs new flooring, paint, and minor kitchen updates.",
         trueARV: Math.round((175000 + 185000 + 180000) / 3), // $180,000 (average of good comps)
-        trueRepairs: 25000, 
+        trueRepairs: 25000,
+        repairOptions: [
+            { value: 15000, isCorrect: false },
+            { value: 25000, isCorrect: true },
+            { value: 35000, isCorrect: false },
+            { value: 45000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((175000 + 185000 + 180000) / 3)) - (2 * 25000) - 10000), // $102,000
         comps: [
             { id: 'A', price: 175000, date: '1 month ago', condition: 'Similar size, solid ARV.', isGood: true },
@@ -854,7 +1136,13 @@ const properties = [
         beds: 3, baths: 1, sqFt: 1200,
         condition: "Needs full interior renovation. High volume rental area.",
         trueARV: Math.round((145000 + 155000 + 150000) / 3), // $150,000 (average of good comps)
-        trueRepairs: 45000, 
+        trueRepairs: 45000,
+        repairOptions: [
+            { value: 25000, isCorrect: false },
+            { value: 45000, isCorrect: true },
+            { value: 65000, isCorrect: false },
+            { value: 80000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((145000 + 155000 + 150000) / 3)) - (2 * 45000) - 10000), // $35,000
         comps: [
             { id: 'A', price: 145000, date: '1 month ago', condition: 'Similar size, solid ARV.', isGood: true },
@@ -872,7 +1160,13 @@ const properties = [
         beds: 4, baths: 3, sqFt: 2100,
         condition: "Large lot, needs full cosmetic update and new roof.",
         trueARV: Math.round((420000 + 440000 + 435000) / 3), // $431,666 (average of good comps)
-        trueRepairs: 60000, 
+        trueRepairs: 60000,
+        repairOptions: [
+            { value: 35000, isCorrect: false },
+            { value: 60000, isCorrect: true },
+            { value: 85000, isCorrect: false },
+            { value: 110000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((420000 + 440000 + 435000) / 3)) - (2 * 60000) - 10000), // $258,499
         comps: [
             { id: 'A', price: 420000, date: '1 month ago', condition: 'Similar size, solid ARV.', isGood: true },
@@ -890,7 +1184,13 @@ const properties = [
         beds: 3, baths: 2, sqFt: 1500,
         condition: "Full gut job. Needs new roof, all systems, and total interior renovation.",
         trueARV: Math.round((295000 + 310000 + 305000) / 3), // $303,333 (average of good comps)
-        trueRepairs: 100000, 
+        trueRepairs: 100000,
+        repairOptions: [
+            { value: 60000, isCorrect: false },
+            { value: 100000, isCorrect: true },
+            { value: 140000, isCorrect: false },
+            { value: 180000, isCorrect: false },
+        ],
         trueMAO: Math.round((0.90 * Math.round((295000 + 310000 + 305000) / 3)) - (2 * 100000) - 10000), // $62,999
         comps: [
             { id: 'A', price: 295000, date: '1 month ago', condition: 'Similar size, solid ARV.', isGood: true },
@@ -949,6 +1249,37 @@ function loadProperty(property) {
     document.getElementById('property-baths').textContent = property.baths;
     document.getElementById('property-sqft').textContent = property.sqFt.toLocaleString();
     document.getElementById('property-condition').textContent = property.condition;
+
+    // Display Repair Options (if available)
+    const repairOptionsContainer = document.getElementById('repair-options');
+    const repairOptionsSection = document.getElementById('repair-options-section');
+    const repairInput = document.getElementById('input-repairs');
+    const repairInputGroup = repairInput?.parentElement;
+
+    if (property.repairOptions && repairOptionsContainer) {
+        // Show repair options, hide manual input
+        repairOptionsContainer.innerHTML = '';
+
+        // Shuffle the options to randomize order (prevents pattern recognition)
+        const shuffledOptions = [...property.repairOptions].sort(() => Math.random() - 0.5);
+
+        shuffledOptions.forEach((option, index) => {
+            const label = document.createElement('label');
+            label.innerHTML = `
+                <input type="radio" name="repair-estimate" value="${option.value}" required>
+                ${formatCurrency(option.value)}
+            `;
+            repairOptionsContainer.appendChild(label);
+        });
+        if (repairOptionsSection) repairOptionsSection.style.display = 'block';
+        if (repairInputGroup) repairInputGroup.style.display = 'none';
+        if (repairInput) repairInput.removeAttribute('required');
+    } else {
+        // Hide repair options, show manual input
+        if (repairOptionsSection) repairOptionsSection.style.display = 'none';
+        if (repairInputGroup) repairInputGroup.style.display = 'block';
+        if (repairInput) repairInput.setAttribute('required', '');
+    }
 
     // Update Comps List
     const compsList = document.getElementById('comps-list');
@@ -1082,7 +1413,16 @@ document.getElementById('arv-form').addEventListener('submit', function(e) {
 
     // 1. Get Player Inputs
     const playerARV = parseInt(document.getElementById('input-arv').value);
-    const playerRepairs = parseInt(document.getElementById('input-repairs').value);
+
+    // Get player repairs - either from radio buttons or input field
+    let playerRepairs;
+    if (currentProperty.repairOptions) {
+        const selectedRepair = document.querySelector('input[name="repair-estimate"]:checked');
+        playerRepairs = selectedRepair ? parseInt(selectedRepair.value) : 0;
+    } else {
+        playerRepairs = parseInt(document.getElementById('input-repairs').value);
+    }
+
     const playerMAO = parseInt(document.getElementById('input-mao').value);
 
     // Get selected comps
@@ -1092,11 +1432,21 @@ document.getElementById('arv-form').addEventListener('submit', function(e) {
     // 2. Score Calculations
     // Define a percentage-based tolerance for scoring
     const ARV_TOLERANCE = currentProperty.trueARV * 0.05; // 5% tolerance on ARV
-    const REPAIRS_TOLERANCE = currentProperty.trueRepairs * 0.20; // 20% tolerance on Repairs
     const MAO_TOLERANCE = currentProperty.trueMAO * 0.10; // 10% tolerance on MAO
 
+    // Repairs scoring depends on whether property has repairOptions
+    let repairsScore;
+    if (currentProperty.repairOptions) {
+        // For repair options, it's binary: correct = 100, incorrect = 0
+        const correctRepairOption = currentProperty.repairOptions.find(opt => opt.isCorrect);
+        repairsScore = (playerRepairs === correctRepairOption.value) ? 100 : 0;
+    } else {
+        // For manual input, use tolerance-based scoring
+        const REPAIRS_TOLERANCE = currentProperty.trueRepairs * 0.20; // 20% tolerance on Repairs
+        repairsScore = calculateScore(playerRepairs, currentProperty.trueRepairs, REPAIRS_TOLERANCE);
+    }
+
     const arvScore = calculateScore(playerARV, currentProperty.trueARV, ARV_TOLERANCE);
-    const repairsScore = calculateScore(playerRepairs, currentProperty.trueRepairs, REPAIRS_TOLERANCE);
     const maoScore = calculateScore(playerMAO, currentProperty.trueMAO, MAO_TOLERANCE);
 
     // Calculate comp selection score
@@ -1323,7 +1673,19 @@ function autoSubmitForm() {
     const maoInput = document.getElementById('input-mao');
 
     if (!arvInput.value) arvInput.value = '0';
-    if (!repairsInput.value) repairsInput.value = '0';
+
+    // Handle repair options or input
+    if (currentProperty.repairOptions) {
+        const selectedRepair = document.querySelector('input[name="repair-estimate"]:checked');
+        if (!selectedRepair) {
+            // Select the first repair option by default
+            const firstRepair = document.querySelector('input[name="repair-estimate"]');
+            if (firstRepair) firstRepair.checked = true;
+        }
+    } else {
+        if (!repairsInput.value) repairsInput.value = '0';
+    }
+
     if (!maoInput.value) maoInput.value = '0';
 
     const submitBtn = document.getElementById('submit-btn');
